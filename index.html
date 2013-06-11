@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB1_JnaH73B6JHDJaKmawowSs7ur88cWEQ&sensor=false"></script>
+<script type="text/javascript">	
+	// Function for adding a marker to the page.
+	function addMarker(id,addr) {
+		var geocoder = new google.maps.Geocoder();	
+		var sAddress = addr;
+	
+		geocoder.geocode( { 'address': sAddress}, function(results, status) { 
+			if (status == google.maps.GeocoderStatus.OK) {
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: map,
+				 	position: results[0].geometry.location
+				});
+				marker.setMap(map);
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			}
+		});
+		
+				
+		/*var Location = new google.maps.LatLng(lat, lng);
+		
+		marker = new google.maps.Marker({
+			position: Location,
+			map: map
+		});*/
+		
+		//set the onclick to removeMarker
+		
+		//THESE ARE FOR THE ONCLICK PLOTTING (NOT USING ATM)
+		//document.getElementById(id).setAttribute('onclick','removeMarker('+id+',\''+addr+'\')');
+		//document.getElementById(id).innerHTML = '[added] '+document.getElementById(id).innerHTML;
+	}
+	function initialize() {		
+		var homeLat = 29.529075;
+		var homeLng  = -98.3630699; 
+		var homeLatlng = new google.maps.LatLng(homeLat, homeLng);
+		var mapOptions = {
+			center: homeLatlng,
+			zoom: 7,
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		};
+		map = new google.maps.Map(document.getElementById("map-canvas"),
+		mapOptions);
+		
+		var homeMarker = new google.maps.Marker({
+			position: homeLatlng,
+			map: map
+		});
+		homeMarker.setMap(map);
+		
+		/* PLOT ALL LOCATIONS */
+		/* SA */
+		addMarker('','6205 West Ave. San Antonio, TX 78213');                
+        addMarker('','12475 Starcrest San Antonio, TX 78216');
+        addMarker('','6019 F.M. 725 New Braunfels, TX 78103');
+        addMarker('','111 W. Crockett, Ste. 214 San Antonio, TX 78205');
+        addMarker('','26 Bella Springs Rd. Boerne, TX 78006');
+		addMarker('','820 East Adler Boerne, TX 78006');
+		addMarker('','1723 Herbelin Rd. New Braunfels, TX 78132');
+		addMarker('','2150 CR 271 Rio Medina, TX 78066');
+		addMarker('','121 Alamo Plaza San Antonio, TX 78205');
+		addMarker('','15900 La Cantera Parkway San Antonio, TX 78256');
+		addMarker('','202 W. Kronkosky St. Boerne, TX 78006');
+		addMarker('','901 Sonterra Blvd. San Antonio, TX 78258');
+		addMarker('','210 S. Grimes Ste. 301 San Antonio, TX 78203');
+		addMarker('','207 N. St. Mary\'s St. San Antonio, TX 78205');
+		addMarker('','11605 State Hwy. 151 San Antonio, TX 78251');
+		addMarker('','10223 Sahara San Antonio, TX 78216');
+		addMarker('','125 East Houston Street San Antonio, TX 78205');
+		addMarker('','2218 E. Chavaneaux Rd. San Antonio, TX 78214 ');
+		addMarker('','3800 Commercial Ave San Antonio, TX 78221');
+		addMarker('','5351 Glen Ridge Dr. San Antonio, TX 78229');
+		addMarker('','7900 Fair Oaks Pkwy. Fair Oaks Ranch, TX 78015');
+		addMarker('','17130 Hwy. 46 W., Ste. 10 Spring Branch, TX 78070');
+		addMarker('','255 East Basse Rd. San Antonio, TX 78209');
+		addMarker('','15060 Antonio Dr. Helotes, TX 78023');
+		addMarker('','5005 West Ave #110 San Antonio, TX 78213');
+		addMarker('','6390 Granberry San Antonio, TX 78239');
+		addMarker('','121 Alamo Plaza San Antonio, TX 78205');
+		addMarker('','448 Private Road 4742 Castroville, TX 78009');
+		addMarker('','2121 N. St. Mary\'s San Antonio, TX 78212');
+		addMarker('','900 FM 32 San Marcos, TX 78666');
+		addMarker('','200 South Alamo Street San Antonio, TX 78205');
+		addMarker('','10135 State Hwy 151 San Antonio, TX 78251');
+		addMarker('','200 Riverwalk, Ste. 100 San Antonio, TX 78205');
+		addMarker('','210 W. Market St. San Antonio, TX 78205');
+		addMarker('','20 Guthrie Road Boerne, TX 78006');
+		addMarker('','950 E. Grayson Street San Antonio, TX 78208');
+		addMarker('','24135 W. I.H. 10 San Antonio, TX 78257');
+		addMarker('','24183 Boerne Stage Rd. San Antonio, TX 78255');
+		addMarker('','17603 IH-10 West San Antonio, TX 78257');
+		addMarker('','2030 N. Main Ave. San Antonio, TX 78212');
+		addMarker('','13202 Scarsdale San Antonio, TX 78217');
+		addMarker('','200 South Alamo San Antonio, TX 78205');
+		addMarker('','307 Pearl Parkway San Antonio, TX 78215');
+		addMarker('','100 W. Houston Ste. 2100 San Antonio, TX 78205');
+		addMarker('','5441 Babcock, Ste. 200 San Antonio, TX 78240');
+		addMarker('','14047 Henze Rd. San Antonio, TX 78223');
+		addMarker('','14025 Hwy. 87 San Antonio TX 78101');
+		addMarker('','19215 Scenic Loop Rd. Helotes, TX 78023');
+		addMarker('','1174 E. Commerce San Antonio, TX 78205');
+		addMarker('','20463 Scenic Loop Road Helotes, TX 78023');
+		addMarker('','847 E. Hildebrand San Antonio, TX 78212');
+		addMarker('','1717 San Pedro Ave. San Antonio, TX 78212');
+		addMarker('','601 Tower of the Americas Way San Antonio, TX 78205');
+		addMarker('','1746 Lockhill-Selma San Antonio, TX 78213');
+		
+		/* AUSTIN */
+		addMarker('','1104 San Antonio Street Austin, TX 78701');
+        addMarker('','1500 County Road 267 Georgetown, TX 78628');
+        addMarker('','14913 Murfin Road Austin, TX 78734');
+        addMarker('','655 East Palm Valley Blvd. Round Rock, TX 78664');
+        addMarker('','13343 Hwy 183, North, Suite 285 Austin, TX 78750');
+		addMarker('','110 East Ninth Street Austin, TX 78701');
+		addMarker('','2600 La Frontera Blvd. Round Rock, TX 78681');
+		addMarker('','2215 Westlakes Dr. Austin, TX 78746');
+		addMarker('','11810 Manchaca Austin, TX 78748');
+		addMarker('','8600 Balcones Club Dr. Austin, TX 78750');
+		addMarker('','4000 Bell Springs Road Dripping Springs, TX 78620');
+		addMarker('','8212 Barton Club Dr. Austin, TX 78735');
+		addMarker('','1408 Chestnut Street Bastrop, TX 78602');
+		addMarker('','406 Sleat Dr. Spicewood, TX 78669');
+		addMarker('','30500 Berry Creek Dr. Georgetown, TX 78628');
+		addMarker('','1410 Rio Grande St. Austin, TX 78701');
+		addMarker('','3509 Creek Road Dripping Springs, TX 78620');
+		addMarker('','208 Barton Springs Rd. Austin, TX 78704');
+		addMarker('','1404 West Avenue Austin, TX 78701');
+		addMarker('','708 San Antonio Street Austin, TX 78701');
+		addMarker('','2601 Sam Bass Rd. Round Rock, TX 78664');
+		addMarker('','6500 Bee Cave Road Austin, TX 78704');
+		addMarker('','18315 RR 1826 Driftwood, TX 78619');
+		addMarker('','6121 N IH 35 at Hwy 290 Austin, TX 78752');
+		addMarker('','326 W. Hopkins San Marcos, TX 78666');
+		addMarker('','5901 N. IH 35 Austin, TX 78723');
+		addMarker('','19926 Thurman Bend Rd. Spicewood, TX 78669');
+		addMarker('','One Dominion Dr. San Antonio, TX 78258');
+		addMarker('','6505 N. IH 35 Austin, TX 78752');
+		addMarker('','13308 FM 150 W. Driftwood, TX 78619');
+		addMarker('','12504 Black Mesa Hollow Cove Austin, Tx 78739');
+		addMarker('','2841 N. FM 1174 Bertram, TX 78605');
+		addMarker('','2222 Downing Lane Leander, TX 78641');
+		addMarker('','5299 W. Hwy. 29 Georgetown, TX 78628');
+		addMarker('','4301A Guadalupe St. Austin, TX 78751');
+		addMarker('','3205 County Rd. 320 Granger, TX 76530');
+		addMarker('','14000 FM 2769 Volente, TX 78641');
+		addMarker('','900 FM 32 San Marcos, TX 78666');
+		addMarker('','5001 McGregor Ln. Dripping Springs, TX 78620');
+		addMarker('','26 Club Estates Parkway Austin, TX 78738');
+		addMarker('','500 E. 4th Street Austin, TX 78701');
+		addMarker('','200 Hi Circle North Horseshoe Bay, TX 78657');
+		addMarker('','319 Addie Roy Rd. Austin, TX 78746');
+		addMarker('','7th Main Street Salado, TX 76571');
+		addMarker('','11110 Fitzhugh Road Austin, TX 78736');
+		addMarker('','10001 Stonelake Blvd. Austin, TX 78759');
+		addMarker('','4550 FM 967 Buda, TX 78610');
+		addMarker('','2100 CR 176 Georgetown, TX 78628');
+		addMarker('','411 RR 620 S. Lakeway, TX 78734'); 
+		addMarker('','101 Lakeway Drive Lakeway, TX 78634');
+		addMarker('','23038 Pedernales Canyon Trail Spicewood, TX 78669');
+		addMarker('','701 W. Riverside Drive Austin, TX 78704');
+		addMarker('','10600 Wagon Road West Austin, TX 78736');
+		addMarker('','2550 Bell Springs Rd. Dripping Springs, TX 77054');
+		addMarker('','1900 Rio Grande Street Austin, TX 78705');
+		addMarker('','6406 N. IH-35, Suite 3100 Austin, TX 78752');
+		addMarker('','300 E. 4th Austin, TX 78701');
+		addMarker('','403 KC Memory Lane Dripping Springs, TX 78620');
+		addMarker('','615 Cardinal Lane Austin, TX 78704');
+		addMarker('','18206 Lakeshore Drive Lago Vista, TX 78645');
+		addMarker('','2310 San Gabriel Austin, TX 78705');
+		addMarker('','6550 Comanche Trail Austin, TX 78732');
+		addMarker('','4140 Governors Row Austin, TX 78744');
+		addMarker('','2510 Onion Creek Pkwy. Austin, TX 78747');
+		addMarker('','401 Sabine Austin, TX 78701');
+		addMarker('','8140 Exchange Dr. Austin, TX 78754');
+		//addMarker('',''); 
+		addMarker('','3603 Kelly Lane Pflugerville, TX 78660');
+		addMarker('','750 Kohler\'s Crossing Kyle, TX 78640');
+		addMarker('','111 E. Cesar Chavez Austin, TX 78701');
+		addMarker('','6600 FM 32 Fischer, TX 78623');
+		addMarker('','850 CR 255 Georgetown, TX 78633');
+		addMarker('','311 E. 5th Street Austin, TX 78701');
+		addMarker('','4207 River Place Blvd Austin, TX 78730');
+		addMarker('','116 S. Lentz St. Red Rock, TX 78662');
+		addMarker('','292 W. Bartlett Drive Buda, TX 78610');
+		addMarker('','18300 FM 1826 Driftwood, TX 78619');
+		addMarker('','1320 E. 51st St. Austin, TX 78723');
+		addMarker('','701 E. 11th Austin, TX 78701');
+		//addMarker('','');
+		addMarker('','4155 Hwy 190 West San Saba, TX 76877');
+		addMarker('','6550 Comanche Trail Austin, TX 78732');
+		addMarker('','2500 FM 685 Hutto, TX 78634');
+		addMarker('','2109 E. 4th Street Taylor, TX 76574');
+		addMarker('','2600 E. Highway 290 Dripping Springs, TX 78620');
+		addMarker('','10900 Hibbs Lane Manor, TX 78653');
+		addMarker('','2312 San Gabriel Street Austin, TX 78705');
+		addMarker('','2530 W. Fitzhugh Rd. Dripping Springs, TX 78620');
+		addMarker('','120 E. San Antonio St. San Marcos, TX 78666');
+		addMarker('','1205 Roland Lane Kyle, TX 78640');
+		addMarker('','6414 W. Bee Caves Rd. Austin, TX 78746');
+		addMarker('','13509 Four Star Blvd. Austin, TX 78737');
+		addMarker('','10225 Research Blvd., Ste. 4000 Austin, TX 78759');
+		addMarker('','16221 Crystal Hills Dr. Austin, TX 78737');
+		addMarker('','3201 Twin Creeks Club Dr. Cedar Park, TX 78613');
+		addMarker('','7345 FM 243 Bertram, TX 78605');
+		addMarker('','2007 University Ave Austin, TX 78705');
+		addMarker('','19039 Adrian Way Lake Travis, TX 78645');
+		addMarker('','22000 Beacon Point Cove Lago Vista, TX 78645');
+		//addMarker('','');
+		addMarker('','7620 N. State HWY 130 Austin, TX 78724');
+		//addMarker('','');
+		addMarker('','4209 Eck Lane Austin, TX 78734');
+		addMarker('','11301 Domain Drive Austin, TX 78758');
+		addMarker('','1630 North Elder Hill Road Driftwood, TX 78619');
+		addMarker('','900 Scott Street Kyle, TX 78640');
+		addMarker('','3401 S. IH 35 Austin, TX 78741');
+		/* END PLOT ALL LOCATIONS */
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+	
+	// Function for removing a marker to the page.
+	function removeMarker(id,addr) {
+		var geocoder = new google.maps.Geocoder();	
+		var sAddress = addr;
+	
+		geocoder.geocode( { 'address': sAddress}, function(results, status) { 
+			if (status == google.maps.GeocoderStatus.OK) {
+				map.setCenter(results[0].geometry.location);
+				var marker = new google.maps.Marker({
+					map: map,
+				 	position: results[0].geometry.location
+				});
+				marker.setMap(null);
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			}
+		});
+		
+		//set the onclick to removeMarker
+		document.getElementById(id).setAttribute('onclick','removeMarker('+id+',\''+addr+'\')');
+		document.getElementById(id).innerHTML = '[added] '+document.getElementById(id).innerHTML;
+	}
+	
+</script>
+</head>
+<body>
+<div class="container">
+	<div class="container-row">
+    	<div class="container-row-lcol">
+        <!-- LEFT -->
+        
+        <!-- END LEFT -->
+        </div>
+        <div class="container-row-mcol">
+        <!-- MIDDLE -->
+        <h1>reference guides - Compare Venues</h1>
+        <form id="">
+        <label class="main-label">Select a guide:</label>
+        <select name="guide" class="main-dropdown">
+        	<option value="1">venues</option>
+        </select>
+        <div class="formLayoutTwoColumn">
+        	<div class="formLayoutTwoColumn-row">
+            	<div class="formLayoutTwoColumn-row-lcol border-bottom">
+                	Option #1: <input type="checkbox" name="option_1" value="yes">
+                </div>
+                <div class="formLayoutTwoColumn-row-rcol border-bottom border-left">
+                	Option #2: <input type="checkbox" name="option_2" value="yes">
+                </div>
+            </div>
+            
+            <div class="formLayoutTwoColumn-row">
+            	<div class="formLayoutTwoColumn-row-lcol border-bottom">
+                	Option #3: <input type="checkbox" name="option_3" value="yes">
+                </div>
+                <div class="formLayoutTwoColumn-row-rcol border-bottom border-left">
+                	Option #4: Min. <input type="text" size="3" maxlength="3" name="option_4_min" value="" class="input-small"> Max. <input type="text" size="3" name="option_4_max" value="" class="input-small" maxlength="3">
+                </div>
+            </div>
+            
+            <div class="formLayoutTwoColumn-row">
+            	<div class="formLayoutTwoColumn-row-lcol border-bottom">
+                	Option #5: <input type="checkbox" name="option_5" value="yes">
+                </div>
+                <div class="formLayoutTwoColumn-row-rcol border-bottom border-left">
+                	Option #6: <input type="checkbox" name="option_6" value="yes">
+                </div>
+            </div>
+            
+            <div class="formLayoutTwoColumn-row">
+            	<div class="formLayoutTwoColumn-row-lcol">
+                	Option #7: <input type="checkbox" name="option_7" value="yes">
+                </div>
+                <div class="formLayoutTwoColumn-row-rcol border-left">
+                	
+                </div>
+            </div>
+        </div>
+        </form>
+        <div id="map-container">
+            <div class="map-container-row">
+                <div class="map-container-row-lcol">
+                    <div id="map-canvas"/>
+                </div>
+                <div class="map-container-row-rcol">
+                    
+                </div>
+            </div>
+        </div>
+        <!-- END MIDDLE -->
+        </div>
+        <div class="container-row-rcol">
+        <!-- RIGHT -->
+        
+        <!-- END RIGHT -->
+        </div>
+    </div>
+</div>
+</body>
+</html>
